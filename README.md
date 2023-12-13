@@ -4,7 +4,7 @@
 
 #### Installation
 
-* To move vgit to /bin/ directory you'll need run:
+* You can move vgit program to /bin/ directory. You'll need run:
 
 ```bash
 cp vgit.py vgit
