@@ -9,17 +9,24 @@ POSIX_SYSCALL_SUCCESS = 0
 
 INSERT_URL_FLAG = 1
 SELECT_URL_FLAG = 2
-
-def get_remotes():
-    pass
+CLEAN_FILE      = 3
 
 def panic(message):
     print(message)
     exit(FAILURE_EXIT)
+    
+    
+def get_banner():
+    print('\n*****************************************************\n')
+    print('Welcome to vgit:\n')
+    print('Author: Vinicius F. da Silva')
+    print('Year: 2023\n')
+    print('*****************************************************\n')
         
 def success(message):
     print(message)
     exit(SUCCESS_EXIT)
+      
         
 def insert_url():
     
@@ -68,12 +75,17 @@ def select_url():
     
     panic('Insert error') if status != POSIX_SYSCALL_SUCCESS else success('Remote origin add successfully!')
         
+def clean_file():
+    
+    status = os.system('rm ./.git/vgit_remotes')
+    success('File cleaned successfully') if status == POSIX_SYSCALL_SUCCESS else panic('File clean process error')
+    
 def menu():
     
-    print('Welcome to vgit:')
+    get_banner()
     
     try:
-        option = int(input(' [1] - Insert a new remote url to repository\n [2] - Select a remote url\n'))
+        option = int(input(' [1] - Insert a new remote url to repository\n [2] - Select a remote url\n [3] - Clean file \n'))
         
     except Exception:
         panic('Wrong option')
@@ -82,6 +94,8 @@ def menu():
         insert_url()
     elif option == SELECT_URL_FLAG:
         select_url()
+    elif option == CLEAN_FILE:
+        clean_file()
     else:
         panic('Wrong option')
     
