@@ -1,7 +1,7 @@
 #!/bin/python
 
 import os
-
+import time
 SUCCESS_EXIT = 0
 FAILURE_EXIT = 1
 
@@ -24,8 +24,11 @@ def get_banner():
     print('*****************************************************\n')
         
 def success(message):
+    print('\n*****************************************************\n')
     print(message)
-    exit(SUCCESS_EXIT)
+    print('*****************************************************\n')
+    time.sleep(3)
+    main() # Back to menu
       
         
 def insert_url():
